@@ -1,0 +1,23 @@
+{
+  "name": "local-codex",
+  "owner": {
+    "name": "Local User"
+  },
+  "metadata": {
+    "description": "Local marketplace for Codex plugin",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "codex",
+      "source": "..",
+      "description": "Codex CLI integration for Claude Code",
+      "version": "1.0.0",
+      "author": {
+        "name": "Codex Team"
+      },
+      "license": "MIT",
+      "keywords": ["codex", "cli", "automation", "code-review"]
+    }
+  ]
+}

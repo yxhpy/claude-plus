@@ -1,0 +1,12 @@
+{
+  "name": "codex",
+  "description": "Codex CLI integration for Claude Code - execute tasks, run reviews, and manage sessions",
+  "version": "1.0.0",
+  "author": {
+    "name": "Codex Team"
+  },
+  "homepage": "https://github.com/codex/codex-plugin",
+  "repository": "https://github.com/codex/codex-plugin",
+  "license": "MIT",
+  "keywords": ["codex", "cli", "automation", "code-review"]
+}
