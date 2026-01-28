@@ -16,7 +16,7 @@
 
 ### 方法 1：本地开发测试
 ```bash
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./marketplaces/
 ```
 
 ### 方法 2：通过本地市场安装

@@ -6,16 +6,20 @@ Claude Code 插件生态系统，包含三个功能插件和配套的 marketplac
 
 ```
 claude-plus/
-├── plugins/              # 插件目录
-│   ├── plugin-creator-plugin/    # 元插件：创建其他插件
-│   ├── website-cloner-plugin/    # 网站克隆插件
-│   ├── codex-plugin/             # Codex CLI 集成
-│   └── test-plugin/              # 测试插件
-│
 ├── marketplaces/         # 市场目录
 │   ├── plugin-creator-marketplace/
+│   │   └── plugins/
+│   │       ├── plugin-creator-plugin/    # 元插件：创建其他插件
+│   │       └── plugin-updater-plugin/    # 插件更新工具
 │   ├── website-cloner-marketplace/
-│   └── codex-marketplace/
+│   │   └── plugins/
+│   │       └── website-cloner-plugin/    # 网站克隆插件
+│   ├── codex-marketplace/
+│   │   └── plugins/
+│   │       └── codex-plugin/             # Codex CLI 集成
+│   └── gemini-designer-marketplace/
+│       └── plugins/
+│           └── gemini-designer-plugin/   # Gemini UI/UX 设计插件
 │
 └── docs/                 # 文档（51个官方文档 + 自定义文档）
 ```
@@ -26,12 +30,12 @@ claude-plus/
 
 ```bash
 # 使用单个插件
-claude --plugin-dir ./plugins/plugin-creator-plugin
+claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-creator-plugin
 
 # 同时使用多个插件
-claude --plugin-dir ./plugins/plugin-creator-plugin \
-       --plugin-dir ./plugins/website-cloner-plugin \
-       --plugin-dir ./plugins/codex-plugin
+claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-creator-plugin \
+       --plugin-dir ./marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin \
+       --plugin-dir ./marketplaces/codex-marketplace/plugins/codex-plugin
 ```
 
 ### 通过 Marketplace 安装
@@ -51,7 +55,7 @@ claude --plugin-dir ./plugins/plugin-creator-plugin \
 创建其他插件的元插件，自动生成完整的插件结构。
 
 ```bash
-claude --plugin-dir ./plugins/plugin-creator-plugin
+claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-creator-plugin
 /plugin-creator:create my-plugin "插件描述"
 ```
 
@@ -66,7 +70,7 @@ claude --plugin-dir ./plugins/plugin-creator-plugin
 高保真克隆网站，包括 HTML、CSS、JavaScript 和所有静态资源。
 
 ```bash
-claude --plugin-dir ./plugins/website-cloner-plugin
+claude --plugin-dir ./marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin
 /website-cloner:clone https://example.com
 ```
 
@@ -77,7 +81,7 @@ claude --plugin-dir ./plugins/website-cloner-plugin
 Codex CLI 集成，提供自动化任务执行和代码审查。
 
 ```bash
-claude --plugin-dir ./plugins/codex-plugin
+claude --plugin-dir ./marketplaces/codex-marketplace/plugins/codex-plugin
 /codex:quick-review          # 快速代码审查
 /codex:exec <task>           # 执行任务
 ```
@@ -88,7 +92,7 @@ claude --plugin-dir ./plugins/codex-plugin
 
 ```bash
 # 1. 使用 Plugin Creator
-claude --plugin-dir ./plugins/plugin-creator-plugin
+claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-creator-plugin
 /plugin-creator:create my-plugin "插件描述"
 
 # 2. 验证插件

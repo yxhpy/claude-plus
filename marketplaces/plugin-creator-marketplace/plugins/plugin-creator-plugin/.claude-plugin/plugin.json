@@ -5,8 +5,8 @@
   "author": {
     "name": "Claude Plus Team"
   },
-  "homepage": "https://github.com/your-repo/plugin-creator-plugin",
-  "repository": "https://github.com/your-repo/plugin-creator-plugin",
+  "homepage": "https://github.com/claude-plus/claude-plus",
+  "repository": "https://github.com/claude-plus/claude-plus",
   "license": "MIT",
   "keywords": ["plugin", "creator", "scaffold", "generator", "开发工具"]
 }

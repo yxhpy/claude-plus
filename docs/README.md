@@ -13,8 +13,7 @@ docs/
 │   └── ...           # 其他官方文档
 │
 ├── custom/            # 自定义创建的文档
-│   ├── codex-cli-reference.md
-│   └── claude-code-plugin-development-guide.md
+│   └── codex-cli-reference.md
 │
 └── README.md          # 本文件
 ```
@@ -49,48 +48,25 @@ docs/
 - **包含**: 所有命令、标志、选项、使用示例
 - **用途**: 学习和使用 Codex CLI 工具
 
-#### 2. `claude-code-plugin-development-guide.md` ⭐
-- **内容**: Claude Code 插件开发实战指南
-- **特点**: 基于实际开发经验总结
-- **包含**:
-  - 常见问题和解决方案
-  - 开发流程最佳实践
-  - 完整的开发检查清单
-  - 实用工具脚本
-- **用途**: 开发自己的 Claude Code 插件
-
-## 🎯 使用建议
-
-### 学习 Claude Code
-1. 从 `official/quickstart.md` 开始
-2. 阅读 `official/plugins.md` 了解插件系统
-3. 参考 `official/cli-reference.md` 学习命令
-
 ### 开发插件
-1. **必读**: `custom/claude-code-plugin-development-guide.md` ⭐
-2. 参考 `official/plugins.md` 和 `official/plugins-reference.md`
-3. 查看 `official/skills.md` 了解技能系统
+1. 阅读 `official/plugins.md` 和 `official/plugins-reference.md`
+2. 查看 `official/skills.md` 了解技能系统
+3. 参考项目中的 `marketplaces/codex-marketplace/plugins/codex-plugin/` 示例
 
 ### 使用 Codex
 1. 阅读 `custom/codex-cli-reference.md`
-2. 参考项目中的 `plugins/codex-plugin/` 示例
+2. 参考项目中的 `marketplaces/codex-marketplace/plugins/codex-plugin/` 示例
 
 ## 📖 相关文档
 
-### 项目根目录
-- `PROJECT_OVERVIEW.md` - 项目总览
-- `项目总结.md` - 完整的项目总结
-
 ### 插件目录
-- `plugins/codex-plugin/使用指南.md` - Codex 插件使用指南
-- `plugins/codex-plugin/README.md` - 插件完整文档
-- `plugins/codex-plugin/QUICKSTART.md` - 快速入门
+- `marketplaces/codex-marketplace/plugins/codex-plugin/README.md` - 插件完整文档
+- `marketplaces/codex-marketplace/plugins/codex-plugin/QUICKSTART.md` - 快速入门
 
 ## 🔗 快速链接
 
 | 文档 | 路径 | 用途 |
 |------|------|------|
-| 插件开发指南 ⭐ | `custom/claude-code-plugin-development-guide.md` | 学习如何开发插件 |
 | Codex CLI 参考 | `custom/codex-cli-reference.md` | 学习 Codex 命令 |
 | 官方插件文档 | `official/plugins.md` | 了解插件系统 |
 | 官方快速入门 | `official/quickstart.md` | 开始使用 Claude Code |
@@ -119,11 +95,10 @@ cp my-new-doc.md docs/custom/
 2. `official/how-claude-code-works.md` - 工作原理
 3. `custom/codex-cli-reference.md` - Codex 使用
 
-### 插件开发者 ⭐
-1. `custom/claude-code-plugin-development-guide.md` - **必读**
-2. `official/plugins.md` - 插件系统
-3. `official/skills.md` - 技能开发
-4. `official/plugins-reference.md` - 完整参考
+### 插件开发者
+1. `official/plugins.md` - 插件系统
+2. `official/skills.md` - 技能开发
+3. `official/plugins-reference.md` - 完整参考
 
 ### 高级用户
 1. `official/hooks.md` - 钩子系统

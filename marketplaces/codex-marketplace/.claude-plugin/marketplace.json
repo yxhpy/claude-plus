@@ -10,15 +10,15 @@
   "plugins": [
     {
       "name": "codex",
-      "description": "Codex CLI integration for Claude Code - 执行任务、运行代码审查和管理会话",
-      "version": "1.0.0",
+      "description": "Enhanced Codex CLI integration - 高级任务执行、智能代码审查、模型优化和全面的会话管理",
+      "version": "2.0.1",
       "author": {
         "name": "Codex Team"
       },
       "homepage": "https://github.com/codex/codex-plugin",
       "source": "./plugins/codex-plugin",
       "license": "MIT",
-      "keywords": ["codex", "cli", "automation", "code-review"]
+      "keywords": ["codex", "cli", "automation", "code-review", "gpt-5.2", "reasoning", "sandbox", "mcp"]
     }
   ]
 }

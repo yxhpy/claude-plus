@@ -14,7 +14,7 @@
 
 ### 方法1：本地开发测试
 ```bash
-claude --plugin-dir ./website-cloner-plugin
+claude --plugin-dir ./marketplaces/
 ```
 
 ### 方法2：通过插件市场安装（如果已发布）
@@ -106,7 +106,7 @@ npx http-server cloned-sites/example.com -p 8000
 
 ### 本地开发
 ```bash
-git clone <your-repo>
+git clone https://github.com/claude-plus/claude-plus.git
 cd website-cloner-plugin
 claude --plugin-dir .
 ```

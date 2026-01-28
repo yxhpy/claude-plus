@@ -1,12 +1,12 @@
 {
   "name": "codex",
-  "description": "Codex CLI integration for Claude Code - execute tasks, run reviews, and manage sessions",
-  "version": "1.0.0",
+  "description": "Enhanced Codex CLI integration - advanced task execution, intelligent code reviews, model optimization, and comprehensive session management",
+  "version": "2.0.1",
   "author": {
     "name": "Codex Team"
   },
   "homepage": "https://github.com/codex/codex-plugin",
   "repository": "https://github.com/codex/codex-plugin",
   "license": "MIT",
-  "keywords": ["codex", "cli", "automation", "code-review"]
+  "keywords": ["codex", "cli", "automation", "code-review", "gpt-5.2", "reasoning", "sandbox", "mcp"]
 }
