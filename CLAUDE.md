@@ -7,8 +7,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 这是一个 Claude Code 插件生态系统项目，包含三个功能插件和配套的 marketplace 分发系统。项目采用插件与市场分离的架构设计。
 
 **核心组件**：
-- **plugins/** - 4个插件（plugin-creator, website-cloner, codex, test-plugin）
-- **marketplaces/** - 3个配套市场
+- **marketplaces/** - 3个独立的 marketplace，每个包含对应的插件
+  - codex-marketplace (包含 codex-plugin)
+  - plugin-creator-marketplace (包含 plugin-creator-plugin)
+  - website-cloner-marketplace (包含 website-cloner-plugin)
 - **docs/** - 51个官方文档 + 自定义文档
 
 ## 快速开始
@@ -17,18 +19,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # 单个插件
-claude --plugin-dir ./plugins/plugin-creator-plugin
+claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-creator-plugin
 
 # 多个插件
-claude --plugin-dir ./plugins/plugin-creator-plugin \
-       --plugin-dir ./plugins/website-cloner-plugin \
-       --plugin-dir ./plugins/codex-plugin
+claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-creator-plugin \
+       --plugin-dir ./marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin \
+       --plugin-dir ./marketplaces/codex-marketplace/plugins/codex-plugin
 ```
 
 ### 测试插件
 
 ```bash
-cd plugins/<plugin-name>-plugin
+cd marketplaces/<marketplace-name>/plugins/<plugin-name>-plugin
 ./validate.sh                    # 验证结构
 claude plugin validate .         # 官方验证（最可靠）
 claude --plugin-dir .           # 本地测试
@@ -36,24 +38,25 @@ claude --plugin-dir .           # 本地测试
 
 ## 架构说明
 
-### 插件与 Marketplace 分离架构
+### 官方推荐的 Marketplace 结构
 
-**关键设计**：插件和 marketplace 是完全独立的目录，通过相对路径关联。
+**关键设计**：根据 Claude Code 官方文档，插件应该位于 marketplace 目录内部，不允许使用 `..` 进行路径遍历。
 
 ```
-项目根目录/
-├── plugins/<name>-plugin/              # 插件本身
-│   └── .claude-plugin/plugin.json     # 只有 plugin.json
-│
-└── marketplaces/<name>-marketplace/    # 独立的市场
-    └── .claude-plugin/marketplace.json # 只有 marketplace.json
+<marketplace-name>/
+├── .claude-plugin/
+│   └── marketplace.json         # Marketplace 配置
+└── plugins/
+    └── <plugin-name>-plugin/    # 插件本身
+        └── .claude-plugin/
+            └── plugin.json      # 插件配置
 ```
 
 **marketplace.json 中的 source 字段**：
 ```json
 {
   "plugins": [{
-    "source": "../../plugins/<plugin-name>-plugin"  // 相对路径指向插件
+    "source": "./plugins/<plugin-name>-plugin"  // 相对路径指向插件
   }]
 }
 ```
@@ -216,7 +219,7 @@ git push -u origin main
     "version": "1.0.0",
     "author": {"name": "作者"},
     "homepage": "https://...",
-    "source": "../../plugins/<plugin-name>-plugin",  // 相对路径
+    "source": "./plugins/<plugin-name>-plugin",  // 相对路径
     "license": "MIT"
   }]
 }
@@ -264,25 +267,126 @@ description: 技能描述
 ---
 ```
 
-### marketplace source 路径错误
+### marketplace source 路径规则
 
-**错误**：使用错误的相对路径
+**重要**：根据 Claude Code 官方规范，source 路径不允许使用 `..` 进行路径遍历（安全限制）。
+
+**正确**：插件位于 marketplace 内部
 ```json
-"source": "./plugin-name-plugin"  // ❌ 错误（假设在同级目录）
+"source": "./plugins/plugin-name-plugin"  // ✅ 正确
 ```
 
-**正确**：使用正确的相对路径
+**错误**：使用 `..` 访问外部目录
 ```json
-"source": "../../plugins/plugin-name-plugin"  // ✅ 正确
+"source": "../../plugins/plugin-name-plugin"  // ❌ 错误（路径遍历不允许）
 ```
 
-### 插件和 marketplace 混淆
+### 插件和 marketplace 的正确结构
 
-**错误**：在同一目录中放置 plugin.json 和 marketplace.json
+**正确**：插件位于 marketplace 内部
+```
+marketplace-name/
+├── .claude-plugin/marketplace.json
+└── plugins/plugin-name/
+    └── .claude-plugin/plugin.json
+```
 
-**正确**：完全分离为独立目录
-- `plugins/<name>-plugin/.claude-plugin/plugin.json`
-- `marketplaces/<name>-marketplace/.claude-plugin/marketplace.json`
+**错误**：插件和 marketplace 分离
+```
+project/
+├── plugins/plugin-name/          # ❌ 错误
+└── marketplaces/marketplace-name/ # ❌ 错误
+```
+
+### 插件创建规范 ⚠️
+
+**重要**：创建插件时必须遵循以下规范，避免硬编码用户特定信息。
+
+#### 1. 禁止硬编码用户路径
+
+**错误示例**：
+```bash
+# ❌ 错误：硬编码用户名
+ENV_FILE="C:/Users/liuguohao/.config/app.env"
+CONFIG_PATH="/home/username/.app/config"
+```
+
+**正确示例**：
+```bash
+# ✅ 正确：使用环境变量和通用路径
+ENV_FILE="${APP_ENV_FILE:-$HOME/.config/app.env}"
+CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/app"
+```
+
+#### 2. 使用跨平台路径表示
+
+**文档中的路径示例**：
+```markdown
+# ✅ 正确：提供多平台示例
+**Windows**: `%USERPROFILE%\.app\.env`
+**Linux/Mac**: `~/.app/.env`
+
+# 或使用通用表示
+配置文件位置：`~/.app/.env`
+```
+
+#### 3. 支持自定义配置路径
+
+**脚本中应支持环境变量覆盖**：
+```bash
+# ✅ 正确：允许用户自定义路径
+CONFIG_FILE="${MY_APP_CONFIG:-$HOME/.app/config.json}"
+
+# 在文档中说明
+export MY_APP_CONFIG=/custom/path/config.json
+```
+
+#### 4. 插件生成位置规范
+
+**必须**：新插件应生成到 `marketplaces/` 目录下
+
+```bash
+# ✅ 正确
+marketplaces/
+└── new-plugin-marketplace/
+    └── plugins/
+        └── new-plugin-plugin/
+
+# ❌ 错误：生成到项目根目录
+new-plugin-marketplace/  # 不应该在根目录
+```
+
+#### 5. 敏感信息处理
+
+**禁止在插件代码中包含**：
+- 用户名
+- 绝对路径（除非必要）
+- API 密钥
+- 个人邮箱
+- 特定机器的配置
+
+**正确做法**：
+- 使用环境变量
+- 提供配置模板
+- 在文档中说明如何配置
+- 使用相对路径或 `$HOME`
+
+#### 6. 验证清单
+
+创建插件后，检查以下内容：
+
+```bash
+# 检查是否包含用户特定路径
+grep -r "Users/[^/]*/" .
+grep -r "/home/[^/]*/" .
+
+# 检查是否包含硬编码的用户名
+grep -r "username" .
+grep -r "liuguohao" .  # 替换为实际用户名
+
+# 确认插件位置正确
+pwd  # 应该在 marketplaces/<plugin-name>-marketplace/
+```
 
 ## 项目特色
 

@@ -16,7 +16,7 @@
         "name": "Claude Plus Team"
       },
       "homepage": "https://github.com/your-repo/website-cloner-plugin",
-      "source": "../../plugins/website-cloner-plugin",
+      "source": "./plugins/website-cloner-plugin",
       "license": "MIT"
     }
   ]

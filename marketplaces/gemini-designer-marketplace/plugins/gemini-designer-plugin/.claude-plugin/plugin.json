@@ -1,0 +1,12 @@
+{
+  "name": "gemini-designer",
+  "description": "高级 UI/UX 和前端工程师插件，使用 Gemini CLI 提供设计审查、组件生成和前端优化建议",
+  "version": "2.0.0",
+  "author": {
+    "name": "Your Name"
+  },
+  "homepage": "https://github.com/yourusername/gemini-designer-marketplace",
+  "repository": "https://github.com/yourusername/gemini-designer-marketplace",
+  "license": "MIT",
+  "keywords": ["ui", "ux", "frontend", "gemini", "design", "component-generator"]
+}

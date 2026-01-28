@@ -16,9 +16,21 @@
         "name": "Claude Plus Team"
       },
       "homepage": "https://github.com/your-repo/plugin-creator-plugin",
-      "source": "../../plugins/plugin-creator-plugin",
+      "source": "./plugins/plugin-creator-plugin",
       "license": "MIT",
       "keywords": ["plugin", "creator", "scaffold", "generator"]
+    },
+    {
+      "name": "plugin-updater",
+      "description": "Update existing Claude Code plugins - modify plugin.json, marketplace.json, and plugin content based on user requirements",
+      "version": "1.0.0",
+      "author": {
+        "name": "Claude Plus Team"
+      },
+      "homepage": "https://github.com/claude-plus/plugin-creator-marketplace",
+      "source": "./plugins/plugin-updater-plugin",
+      "license": "MIT",
+      "keywords": ["plugin", "updater", "management", "marketplace"]
     }
   ]
 }

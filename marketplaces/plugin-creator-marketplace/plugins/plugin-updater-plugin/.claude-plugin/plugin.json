@@ -1,0 +1,12 @@
+{
+  "name": "plugin-updater",
+  "description": "Update existing Claude Code plugins - modify plugin.json, marketplace.json, and plugin content based on user requirements",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claude Plus Team"
+  },
+  "homepage": "https://github.com/claude-plus/plugin-creator-marketplace",
+  "repository": "https://github.com/claude-plus/plugin-creator-marketplace",
+  "license": "MIT",
+  "keywords": ["plugin", "updater", "management", "marketplace"]
+}
