@@ -73,7 +73,7 @@ docs/
 
 ### 使用 Codex
 1. 阅读 `custom/codex-cli-reference.md`
-2. 参考项目中的 `codex-plugin/` 示例
+2. 参考项目中的 `plugins/codex-plugin/` 示例
 
 ## 📖 相关文档
 
@@ -82,9 +82,9 @@ docs/
 - `项目总结.md` - 完整的项目总结
 
 ### 插件目录
-- `codex-plugin/使用指南.md` - Codex 插件使用指南
-- `codex-plugin/README.md` - 插件完整文档
-- `codex-plugin/QUICKSTART.md` - 快速入门
+- `plugins/codex-plugin/使用指南.md` - Codex 插件使用指南
+- `plugins/codex-plugin/README.md` - 插件完整文档
+- `plugins/codex-plugin/QUICKSTART.md` - 快速入门
 
 ## 🔗 快速链接
 

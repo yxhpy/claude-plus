@@ -26,7 +26,7 @@ This package contains comprehensive documentation and a fully functional Claude 
 
 See `docs/README.md` for detailed documentation organization.
 
-### 2. Claude Code Plugin (`codex-plugin/`)
+### 2. Claude Code Plugin (`plugins/codex-plugin/`)
 A production-ready plugin that integrates Codex into Claude Code with:
 
 #### Plugin Components
@@ -66,7 +66,7 @@ code docs/codex-cli-reference.md
 
 ```bash
 # Run validation
-cd codex-plugin
+cd plugins/codex-plugin
 ./validate.sh
 ```
 
@@ -75,7 +75,7 @@ cd codex-plugin
 ```bash
 # Load plugin temporarily
 cd /path/to/your/project
-claude --plugin-dir /path/to/codex-plugin
+claude --plugin-dir /path/to/plugins/codex-plugin
 
 # Try a command
 /codex:quick-review
@@ -85,7 +85,7 @@ claude --plugin-dir /path/to/codex-plugin
 
 ```bash
 # Copy to Claude plugins directory
-cp -r codex-plugin ~/.claude/plugins/
+cp -r plugins/codex-plugin ~/.claude/plugins/
 
 # Restart Claude Code
 claude
@@ -105,7 +105,7 @@ claude
 │       ├── codex-cli-reference.md                 # Codex CLI documentation
 │       └── claude-code-plugin-development-guide.md # Plugin dev guide ⭐
 │
-├── codex-plugin/                  # Claude Code plugin
+├── plugins/codex-plugin/                  # Claude Code plugin
 │   ├── .claude-plugin/
 │   │   └── plugin.json           # Plugin manifest
 │   ├── commands/                  # User-invoked commands
@@ -158,12 +158,12 @@ Use the plugin as a template for your own Claude Code plugins.
 3. Try examples in your terminal
 
 ### For Claude Code Users
-1. Read `codex-plugin/QUICKSTART.md`
+1. Read `plugins/codex-plugin/QUICKSTART.md`
 2. Install the plugin
 3. Try the example workflows
 
 ### For Plugin Developers
-1. Study `codex-plugin/STRUCTURE.md`
+1. Study `plugins/codex-plugin/STRUCTURE.md`
 2. Examine the plugin files
 3. Customize for your needs
 
@@ -192,7 +192,7 @@ cat docs/codex-cli-reference.md
 ### Validate Plugin
 ```bash
 # Run validation script
-cd codex-plugin
+cd plugins/codex-plugin
 ./validate.sh
 
 # Should output: ✓ Validation passed!
@@ -203,7 +203,7 @@ cd codex-plugin
 ### Beginner
 1. Read `docs/codex-cli-reference.md` - Quick Start section
 2. Try basic Codex commands in terminal
-3. Install plugin: `codex-plugin/QUICKSTART.md`
+3. Install plugin: `plugins/codex-plugin/QUICKSTART.md`
 4. Try `/codex:quick-review`
 
 ### Intermediate
@@ -304,11 +304,11 @@ codex <command> --help
 | Codex CLI Reference | `docs/custom/codex-cli-reference.md` |
 | Plugin Dev Guide ⭐ | `docs/custom/claude-code-plugin-development-guide.md` |
 | Official Plugins Doc | `docs/official/plugins.md` |
-| Plugin README | `codex-plugin/README.md` |
-| Plugin Quick Start | `codex-plugin/QUICKSTART.md` |
-| Installation | `codex-plugin/INSTALL.md` |
-| Structure | `codex-plugin/STRUCTURE.md` |
-| Validation | `codex-plugin/validate.sh` |
+| Plugin README | `plugins/codex-plugin/README.md` |
+| Plugin Quick Start | `plugins/codex-plugin/QUICKSTART.md` |
+| Installation | `plugins/codex-plugin/INSTALL.md` |
+| Structure | `plugins/codex-plugin/STRUCTURE.md` |
+| Validation | `plugins/codex-plugin/validate.sh` |
 
 ---
 
@@ -321,7 +321,7 @@ cat docs/custom/codex-cli-reference.md
 
 ### Option 2: Use Plugin
 ```bash
-cd codex-plugin
+cd plugins/codex-plugin
 ./validate.sh
 claude --plugin-dir .
 ```
@@ -333,7 +333,7 @@ cat docs/custom/codex-cli-reference.md
 cat docs/custom/claude-code-plugin-development-guide.md
 
 # Install plugin
-cp -r codex-plugin ~/.claude/plugins/
+cp -r plugins/codex-plugin ~/.claude/plugins/
 
 # Start using
 claude

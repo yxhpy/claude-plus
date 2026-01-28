@@ -6,31 +6,31 @@
 
 ```
 claude-plus/
-├── plugin-creator-marketplace/      # Plugin Creator 市场
+├── marketplaces/plugin-creator-marketplace/      # Plugin Creator 市场
 │   └── .claude-plugin/
-│       └── marketplace.json        # 指向 ./plugin-creator-plugin
+│       └── marketplace.json        # 指向 ./plugins/plugin-creator-plugin
 │
-├── plugin-creator-plugin/          # Plugin Creator 插件
+├── plugins/plugin-creator-plugin/          # Plugin Creator 插件
 │   ├── .claude-plugin/
 │   │   └── plugin.json            # 只有 plugin.json
 │   ├── commands/
 │   ├── skills/
 │   └── ...
 │
-├── website-cloner-marketplace/     # Website Cloner 市场
+├── marketplaces/website-cloner-marketplace/     # Website Cloner 市场
 │   └── .claude-plugin/
-│       └── marketplace.json        # 指向 ./website-cloner-plugin
+│       └── marketplace.json        # 指向 ./plugins/website-cloner-plugin
 │
-├── website-cloner-plugin/          # Website Cloner 插件
+├── plugins/website-cloner-plugin/          # Website Cloner 插件
 │   ├── .claude-plugin/
 │   │   └── plugin.json
 │   └── ...
 │
-├── codex-marketplace/              # Codex 市场
+├── marketplaces/codex-marketplace/              # Codex 市场
 │   └── .claude-plugin/
-│       └── marketplace.json        # 指向 ./codex-plugin
+│       └── marketplace.json        # 指向 ./plugins/codex-plugin
 │
-└── codex-plugin/                   # Codex 插件
+└── plugins/codex-plugin/                   # Codex 插件
     ├── .claude-plugin/
     │   └── plugin.json
     └── ...
@@ -54,14 +54,14 @@ claude-plus/
 
 ```bash
 # 直接加载插件目录
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin
 ```
 
 ### 方法 2：通过市场安装
 
 ```bash
 # 添加市场
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/plugin-creator-marketplace
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/plugin-creator-marketplace
 
 # 安装插件
 /plugin install plugin-creator@plugin-creator-marketplace
@@ -70,28 +70,28 @@ claude --plugin-dir ./plugin-creator-plugin
 ### 方法 3：同时使用多个插件
 
 ```bash
-claude --plugin-dir ./plugin-creator-plugin \
-       --plugin-dir ./website-cloner-plugin \
-       --plugin-dir ./codex-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin \
+       --plugin-dir ./plugins/website-cloner-plugin \
+       --plugin-dir ./plugins/codex-plugin
 ```
 
 ## 📦 三个市场
 
 ### 1. Plugin Creator Marketplace
 ```bash
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/plugin-creator-marketplace
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/plugin-creator-marketplace
 /plugin install plugin-creator@plugin-creator-marketplace
 ```
 
 ### 2. Website Cloner Marketplace
 ```bash
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/website-cloner-marketplace
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/website-cloner-marketplace
 /plugin install website-cloner@website-cloner-marketplace
 ```
 
 ### 3. Codex Marketplace
 ```bash
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/codex-marketplace
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/codex-marketplace
 /plugin install codex@codex-marketplace
 ```
 

@@ -16,7 +16,7 @@
         "name": "Codex Team"
       },
       "homepage": "https://github.com/codex/codex-plugin",
-      "source": "./codex-plugin",
+      "source": "../../plugins/codex-plugin",
       "license": "MIT",
       "keywords": ["codex", "cli", "automation", "code-review"]
     }

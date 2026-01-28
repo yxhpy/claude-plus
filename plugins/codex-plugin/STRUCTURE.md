@@ -219,4 +219,4 @@ find codex-plugin/skills -name "SKILL.md"
 
 - [Claude Code Plugin Documentation](https://code.claude.com/docs/plugins)
 - [Skills Documentation](https://code.claude.com/docs/skills)
-- [Codex CLI Reference](../docs/codex-cli-reference.md)
+- [Codex CLI Reference](../../docs/custom/codex-cli-reference.md)

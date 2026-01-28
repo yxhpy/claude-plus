@@ -213,7 +213,7 @@ claude --plugin-dir ./codex-plugin -p "run full test suite and report"
 - **Plugin Issues**: Check the README.md
 - **Codex Issues**: Run `codex --help`
 - **Claude Code Issues**: Type `/help` in Claude Code
-- **Documentation**: See [Codex CLI Reference](../docs/codex-cli-reference.md)
+- **Documentation**: See [Codex CLI Reference](../../docs/custom/codex-cli-reference.md)
 
 ## Example Session
 
@@ -244,7 +244,7 @@ git commit -m "Fix linting errors and add tests"
 
 - Explore all commands with `/help`
 - Read the full [README](./README.md)
-- Check out [Codex CLI Reference](../docs/codex-cli-reference.md)
+- Check out [Codex CLI Reference](../../docs/custom/codex-cli-reference.md)
 - Customize the plugin for your needs
 
 Happy coding! 🚀

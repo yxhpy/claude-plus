@@ -8,7 +8,7 @@
 
 - **名称**: website-cloner
 - **版本**: 1.0.0
-- **位置**: `/Users/yxhpy/PycharmProjects/claude-plus/website-cloner-plugin/`
+- **位置**: `/Users/yxhpy/PycharmProjects/claude-plus/plugins/website-cloner-plugin/`
 - **许可证**: MIT
 
 ## 📁 完整文件列表

@@ -105,7 +105,7 @@ Plugin Creator 插件的模板已更新为符合 Claude Code 官方规范的结�
 ### 创建新插件
 ```bash
 # 加载 Plugin Creator
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin
 
 # 创建新插件
 /plugin-creator:create my-plugin "插件描述"
@@ -114,11 +114,11 @@ claude --plugin-dir ./plugin-creator-plugin
 ### 测试新插件
 ```bash
 # 方式 1：直接使用（推荐）
-cd my-plugin-plugin
+cd plugins/my-plugin-plugin
 claude --plugin-dir .
 
 # 方式 2：通过市场
-/plugin marketplace add ./my-plugin-marketplace
+/plugin marketplace add ./marketplaces/my-plugin-marketplace
 /plugin install my-plugin@my-plugin-marketplace
 ```
 

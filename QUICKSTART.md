@@ -4,12 +4,12 @@
 
 ```
 claude-plus/
-├── Marketplaces (市场目录)
+├── marketplaces/ (市场目录)
 │   ├── plugin-creator-marketplace/
 │   ├── website-cloner-marketplace/
 │   └── codex-marketplace/
 │
-└── Plugins (插件目录)
+└── plugins/ (插件目录)
     ├── plugin-creator-plugin/
     ├── website-cloner-plugin/
     └── codex-plugin/
@@ -23,21 +23,21 @@ claude-plus/
 cd /Users/yxhpy/PycharmProjects/claude-plus
 
 # 使用单个插件
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin
 
 # 同时使用多个插件
-claude --plugin-dir ./plugin-creator-plugin \
-       --plugin-dir ./website-cloner-plugin \
-       --plugin-dir ./codex-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin \
+       --plugin-dir ./plugins/website-cloner-plugin \
+       --plugin-dir ./plugins/codex-plugin
 ```
 
 ### 方式 2：通过本地市场安装
 
 ```bash
 # 添加市场
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/plugin-creator-marketplace
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/website-cloner-marketplace
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/codex-marketplace
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/plugin-creator-marketplace
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/website-cloner-marketplace
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/codex-marketplace
 
 # 安装插件
 /plugin install plugin-creator@plugin-creator-marketplace
@@ -60,7 +60,7 @@ claude --plugin-dir ./plugin-creator-plugin \
 
 ```bash
 # 直接使用
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin
 
 # 创建新插件
 /plugin-creator:create my-plugin "插件描述"
@@ -71,7 +71,7 @@ claude --plugin-dir ./plugin-creator-plugin
 
 ```bash
 # 直接使用
-claude --plugin-dir ./website-cloner-plugin
+claude --plugin-dir ./plugins/website-cloner-plugin
 
 # 克隆网站
 /website-cloner:clone https://example.com
@@ -82,7 +82,7 @@ claude --plugin-dir ./website-cloner-plugin
 
 ```bash
 # 直接使用
-claude --plugin-dir ./codex-plugin
+claude --plugin-dir ./plugins/codex-plugin
 
 # 使用命令
 /codex:quick-review
@@ -116,15 +116,15 @@ claude --plugin-dir ./codex-plugin
 
 ```bash
 # 1. 测试 Plugin Creator
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin
 # 然后运行: /plugin-creator:create test-plugin
 
 # 2. 测试 Website Cloner
-claude --plugin-dir ./website-cloner-plugin
+claude --plugin-dir ./plugins/website-cloner-plugin
 # 然后运行: /website-cloner:clone https://example.com
 
 # 3. 测试 Codex
-claude --plugin-dir ./codex-plugin
+claude --plugin-dir ./plugins/codex-plugin
 # 然后运行: /codex:quick-review
 ```
 

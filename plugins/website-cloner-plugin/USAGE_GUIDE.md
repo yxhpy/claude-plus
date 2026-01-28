@@ -28,7 +28,7 @@ claude --plugin-dir ./website-cloner-plugin
 
 1. **添加本地市场**：
    ```bash
-   /plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/website-cloner-plugin
+   /plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/website-cloner-marketplace
    ```
 
 2. **查看可用插件**：

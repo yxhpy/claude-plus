@@ -28,7 +28,7 @@ claude --plugin-dir ./codex-plugin
 
 1. **添加本地市场**：
    ```bash
-   /plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/codex-plugin
+   /plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/codex-marketplace
    ```
 
 2. **查看可用插件**：

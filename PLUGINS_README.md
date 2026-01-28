@@ -15,7 +15,7 @@
 
 **安装**：
 ```bash
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin
 ```
 
 **使用**：
@@ -24,9 +24,9 @@ claude --plugin-dir ./plugin-creator-plugin
 ```
 
 **详细文档**：
-- [README](./plugin-creator-plugin/README.md)
-- [快速开始](./plugin-creator-plugin/QUICKSTART.md)
-- [项目结构](./plugin-creator-plugin/PROJECT_STRUCTURE.md)
+- [README](./plugins/plugin-creator-plugin/README.md)
+- [快速开始](./plugins/plugin-creator-plugin/QUICKSTART.md)
+- [项目结构](./plugins/plugin-creator-plugin/PROJECT_STRUCTURE.md)
 
 ---
 
@@ -41,7 +41,7 @@ claude --plugin-dir ./plugin-creator-plugin
 
 **安装**：
 ```bash
-claude --plugin-dir ./website-cloner-plugin
+claude --plugin-dir ./plugins/website-cloner-plugin
 ```
 
 **使用**：
@@ -50,9 +50,9 @@ claude --plugin-dir ./website-cloner-plugin
 ```
 
 **详细文档**：
-- [README](./website-cloner-plugin/README.md)
-- [使用指南](./website-cloner-plugin/USAGE_GUIDE.md)
-- [快速开始](./website-cloner-plugin/QUICKSTART.md)
+- [README](./plugins/website-cloner-plugin/README.md)
+- [使用指南](./plugins/website-cloner-plugin/USAGE_GUIDE.md)
+- [快速开始](./plugins/website-cloner-plugin/QUICKSTART.md)
 
 ---
 
@@ -66,7 +66,7 @@ claude --plugin-dir ./website-cloner-plugin
 
 **安装**：
 ```bash
-claude --plugin-dir ./codex-plugin
+claude --plugin-dir ./plugins/codex-plugin
 ```
 
 **使用**：
@@ -78,9 +78,9 @@ claude --plugin-dir ./codex-plugin
 ```
 
 **详细文档**：
-- [README](./codex-plugin/README.md)
-- [使用指南](./codex-plugin/USAGE_GUIDE.md)
-- [快速开始](./codex-plugin/QUICKSTART.md)
+- [README](./plugins/codex-plugin/README.md)
+- [使用指南](./plugins/codex-plugin/USAGE_GUIDE.md)
+- [快速开始](./plugins/codex-plugin/QUICKSTART.md)
 
 ---
 
@@ -91,18 +91,18 @@ claude --plugin-dir ./codex-plugin
 ```bash
 # 启动 Claude Code 并加载所有插件
 cd /Users/yxhpy/PycharmProjects/claude-plus
-claude --plugin-dir ./plugin-creator-plugin \
-       --plugin-dir ./website-cloner-plugin \
-       --plugin-dir ./codex-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin \
+       --plugin-dir ./plugins/website-cloner-plugin \
+       --plugin-dir ./plugins/codex-plugin
 ```
 
 ### 方法 2：通过本地市场安装
 
 ```bash
 # 添加市场
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/plugin-creator-plugin
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/website-cloner-plugin
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/codex-plugin
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/plugin-creator-plugin
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/website-cloner-plugin
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/codex-plugin
 
 # 安装插件
 /plugin install plugin-creator@plugin-creator-marketplace
@@ -193,7 +193,7 @@ claude-plus/
 
 ```bash
 # 1. 加载 Plugin Creator
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin
 
 # 2. 创建新插件
 /plugin-creator:create my-awesome-plugin "一个很棒的插件"
@@ -264,7 +264,7 @@ claude --plugin-dir .
 
 ```bash
 # 1. 加载 Plugin Creator
-claude --plugin-dir ./plugin-creator-plugin
+claude --plugin-dir ./plugins/plugin-creator-plugin
 
 # 2. 创建插件
 /plugin-creator:create my-plugin "插件描述"
@@ -336,21 +336,21 @@ git push -u origin main
 ## 📚 文档资源
 
 ### Plugin Creator
-- [完整 README](./plugin-creator-plugin/README.md)
-- [快速开始](./plugin-creator-plugin/QUICKSTART.md)
-- [项目结构](./plugin-creator-plugin/PROJECT_STRUCTURE.md)
+- [完整 README](./plugins/plugin-creator-plugin/README.md)
+- [快速开始](./plugins/plugin-creator-plugin/QUICKSTART.md)
+- [项目结构](./plugins/plugin-creator-plugin/PROJECT_STRUCTURE.md)
 
 ### Website Cloner Plugin
-- [完整使用指南](./website-cloner-plugin/USAGE_GUIDE.md)
-- [快速开始](./website-cloner-plugin/QUICKSTART.md)
-- [使用示例](./website-cloner-plugin/EXAMPLES.md)
-- [合规说明](./website-cloner-plugin/COMPLIANCE.md)
+- [完整使用指南](./plugins/website-cloner-plugin/USAGE_GUIDE.md)
+- [快速开始](./plugins/website-cloner-plugin/QUICKSTART.md)
+- [使用示例](./plugins/website-cloner-plugin/EXAMPLES.md)
+- [合规说明](./plugins/website-cloner-plugin/COMPLIANCE.md)
 
 ### Codex Plugin
-- [完整使用指南](./codex-plugin/USAGE_GUIDE.md)
-- [快速开始](./codex-plugin/QUICKSTART.md)
-- [安装说明](./codex-plugin/INSTALL.md)
-- [结构说明](./codex-plugin/STRUCTURE.md)
+- [完整使用指南](./plugins/codex-plugin/USAGE_GUIDE.md)
+- [快速开始](./plugins/codex-plugin/QUICKSTART.md)
+- [安装说明](./plugins/codex-plugin/INSTALL.md)
+- [结构说明](./plugins/codex-plugin/STRUCTURE.md)
 
 ### Claude Code 官方文档
 - [插件开发](https://code.claude.com/docs/plugins)

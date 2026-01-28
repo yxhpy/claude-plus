@@ -84,17 +84,17 @@
 ## 📦 已修复的插件
 
 ### 1. Plugin Creator
-- **文件**: `plugin-creator-plugin/.claude-plugin/marketplace.json`
+- **文件**: `plugins/plugin-creator-plugin/.claude-plugin/marketplace.json`
 - **市场名**: `plugin-creator-marketplace`
 - **状态**: ✅ 验证通过
 
 ### 2. Website Cloner
-- **文件**: `website-cloner-plugin/.claude-plugin/marketplace.json`
+- **文件**: `plugins/website-cloner-plugin/.claude-plugin/marketplace.json`
 - **市场名**: `website-cloner-marketplace`
 - **状态**: ✅ 验证通过
 
 ### 3. Codex Plugin
-- **文件**: `codex-plugin/.claude-plugin/marketplace.json`
+- **文件**: `plugins/codex-plugin/.claude-plugin/marketplace.json`
 - **市场名**: `codex-marketplace`
 - **状态**: ✅ 验证通过
 
@@ -107,7 +107,7 @@ cat <plugin-name>/.claude-plugin/marketplace.json | jq empty
 
 ### 添加本地市场
 ```bash
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/<plugin-name>
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/<marketplace-name>
 ```
 
 ### 安装插件
@@ -134,17 +134,17 @@ cat <plugin-name>/.claude-plugin/marketplace.json | jq empty
 
 1. **验证插件结构**:
    ```bash
-   cd plugin-creator-plugin && ./validate.sh
+   cd plugins/plugin-creator-plugin && ./validate.sh
    ```
 
 2. **测试插件**:
    ```bash
-   claude --plugin-dir ./plugin-creator-plugin
+   claude --plugin-dir ./plugins/plugin-creator-plugin
    ```
 
 3. **添加市场**:
    ```bash
-   /plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/plugin-creator-plugin
+   /plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/plugin-creator-marketplace
    ```
 
 4. **安装插件**:

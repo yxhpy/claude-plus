@@ -237,7 +237,7 @@ MIT License - see LICENSE file for details
 ## Support
 
 - **Issues**: Report bugs on GitHub
-- **Documentation**: See [Codex CLI Reference](./docs/codex-cli-reference.md)
+- **Documentation**: See [Codex CLI Reference](../../docs/custom/codex-cli-reference.md)
 - **Community**: Join the Claude Code Discord
 
 ## Changelog

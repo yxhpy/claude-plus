@@ -21,7 +21,7 @@ claude --plugin-dir ./plugin-creator-plugin
 
 ### 方法 2：通过本地市场安装
 ```bash
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/plugin-creator-plugin
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/plugin-creator-marketplace
 /plugin install plugin-creator@plugin-creator-marketplace
 ```
 

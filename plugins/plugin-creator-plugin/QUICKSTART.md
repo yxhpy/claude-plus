@@ -14,7 +14,7 @@ claude --plugin-dir ./plugin-creator-plugin
 
 ### 永久安装
 ```bash
-/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/plugin-creator-plugin
+/plugin marketplace add /Users/yxhpy/PycharmProjects/claude-plus/marketplaces/plugin-creator-marketplace
 /plugin install plugin-creator@plugin-creator-marketplace
 ```
 
@@ -191,7 +191,6 @@ cat .claude-plugin/plugin.json | jq
 ## 📖 推荐阅读
 
 - [完整 README](./README.md)
-- [详细使用指南](./USAGE_GUIDE.md)
 - [Claude Code 插件文档](https://code.claude.com/docs/plugins)
 
 ---
