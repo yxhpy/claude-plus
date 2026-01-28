@@ -1,0 +1,24 @@
+{
+  "name": "codex-marketplace",
+  "owner": {
+    "name": "Codex Team"
+  },
+  "metadata": {
+    "description": "Codex CLI 集成插件市场",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "codex",
+      "description": "Codex CLI integration for Claude Code - 执行任务、运行代码审查和管理会话",
+      "version": "1.0.0",
+      "author": {
+        "name": "Codex Team"
+      },
+      "homepage": "https://github.com/codex/codex-plugin",
+      "source": "./codex-plugin",
+      "license": "MIT",
+      "keywords": ["codex", "cli", "automation", "code-review"]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "website-cloner",
+  "description": "高保真克隆和还原网站的插件，支持HTML、CSS、JavaScript和静态资源",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claude Plus Team"
+  },
+  "homepage": "https://github.com/your-repo/website-cloner-plugin",
+  "repository": "https://github.com/your-repo/website-cloner-plugin",
+  "license": "MIT"
+}

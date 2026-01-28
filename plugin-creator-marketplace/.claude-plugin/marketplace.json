@@ -1,0 +1,24 @@
+{
+  "name": "plugin-creator-marketplace",
+  "owner": {
+    "name": "Claude Plus Team"
+  },
+  "metadata": {
+    "description": "Plugin Creator 插件市场",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "plugin-creator",
+      "description": "快速创建 Claude Code 插件的脚手架工具",
+      "version": "1.0.0",
+      "author": {
+        "name": "Claude Plus Team"
+      },
+      "homepage": "https://github.com/your-repo/plugin-creator-plugin",
+      "source": "./plugin-creator-plugin",
+      "license": "MIT",
+      "keywords": ["plugin", "creator", "scaffold", "generator"]
+    }
+  ]
+}
