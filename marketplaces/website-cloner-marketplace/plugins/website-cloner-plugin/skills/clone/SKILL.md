@@ -1,87 +1,227 @@
 ---
 name: clone
-description: 高保真克隆网站，包括HTML、CSS、JavaScript和所有静态资源。使用方式：/website-cloner:clone <网站URL>
+description: 高保真克隆网站，使用通用脚本工具集和 Puppeteer 无头浏览器渲染完整内容，支持动态网站、懒加载图片和 SPA 应用。使用方式：/website-cloner:clone <网站URL>
 ---
 
-# 网站克隆技能
+# 网站克隆技能（脚本化版本）
 
-你是一个专业的网站克隆工具。当用户提供网站URL时，你需要执行以下步骤来创建高保真的本地副本：
+你是一个专业的网站克隆工具。使用插件提供的通用脚本工具集，支持现代动态网站的完整克隆。
 
 ## 输入参数
 - `$ARGUMENTS`: 要克隆的网站URL（例如：https://example.com）
 
-## 克隆流程
+## 🎯 核心优势
 
-### 1. 验证和准备
-- 验证提供的URL格式是否正确
-- 确保URL包含协议（http:// 或 https://）
-- 创建项目目录结构：`cloned-sites/<域名>/`
+本插件提供了一套完整的通用脚本工具集，位于 `scripts/` 目录：
 
-### 2. 获取主页面
-- 使用 WebFetch 工具获取主页HTML内容
-- 分析HTML结构，识别所有资源引用：
-  - CSS文件（`<link rel="stylesheet">`）
-  - JavaScript文件（`<script src="">`）
-  - 图片（`<img src="">`）
-  - 字体文件（`@font-face`）
-  - 其他媒体资源（视频、音频等）
+1. **clone-with-puppeteer.js** - Puppeteer 渲染引擎
+2. **format-html.js** - HTML 格式化工具
+3. **download-images.js** - 批量图片下载器
+4. **extract-resources.sh** - 资源 URL 提取器
+5. **clone-website.sh** - 一键完整克隆流程 ⭐
 
-### 3. 下载资源文件
-- 对于每个识别出的资源：
-  - 使用 WebFetch 获取资源内容
-  - 保持原始目录结构
-  - 处理相对路径和绝对路径
-  - 更新HTML中的资源引用为本地路径
+## 🚀 推荐使用方法
 
-### 4. 处理CSS文件
-- 下载所有CSS文件
-- 分析CSS中的 `@import` 和 `url()` 引用
-- 下载CSS中引用的图片、字体等资源
-- 更新CSS中的路径引用
+### 方法 1: 一键克隆（推荐）
 
-### 5. 处理JavaScript文件
-- 下载所有JavaScript文件
-- 保持原始文件结构
-- 注意：某些动态加载的内容可能需要特殊处理
+使用完整流程脚本，自动执行所有步骤：
 
-### 6. 创建本地版本
-- 生成完整的目录结构：
-  ```
-  cloned-sites/<域名>/
-  ├── index.html          # 主页面
-  ├── css/                # 样式文件
-  ├── js/                 # JavaScript文件
-  ├── images/             # 图片资源
-  ├── fonts/              # 字体文件
-  └── assets/             # 其他资源
-  ```
+```bash
+# 定位到脚本目录
+PLUGIN_DIR="marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin"
+cd "$PLUGIN_DIR/scripts"
 
-### 7. 路径修正
-- 将所有绝对URL转换为相对路径
-- 确保所有资源链接指向本地文件
-- 处理跨域资源（CDN链接等）
+# 执行克隆
+./clone-website.sh <URL>
+```
 
-### 8. 生成报告
-向用户报告：
-- 克隆的文件总数
-- 下载的资源大小
-- 保存位置
-- 如何在本地预览（使用本地服务器）
+**示例**：
+```bash
+./clone-website.sh https://www.bilibili.com
+```
+
+这个脚本会自动：
+- ✅ 创建目录结构
+- ✅ 使用 Puppeteer 渲染页面
+- ✅ 格式化 HTML
+- ✅ 提取资源 URL
+- ✅ 下载图片、CSS、JS
+- ✅ 生成 README 文档
+- ✅ 显示统计信息
+
+### 方法 2: 使用 Bash 工具直接调用
+
+```bash
+bash marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin/scripts/clone-website.sh "$ARGUMENTS"
+```
+
+## 📋 克隆流程详解
+
+当用户请求克隆网站时，执行以下步骤：
+
+### 步骤 1: 定位插件脚本目录
+
+```bash
+PLUGIN_DIR="marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin"
+SCRIPT_DIR="$PLUGIN_DIR/scripts"
+```
+
+### 步骤 2: 执行一键克隆脚本
+
+```bash
+bash "$SCRIPT_DIR/clone-website.sh" "$ARGUMENTS"
+```
+
+## 🛠️ 脚本工具说明
+
+### 1. clone-with-puppeteer.js
+**功能**: 使用 Puppeteer 渲染完整页面
+
+**特性**:
+- 自动滚动触发懒加载
+- 提取所有图片 URL
+- 保存完整 HTML
+- 生成页面截图
+
+**用法**:
+```bash
+node scripts/clone-with-puppeteer.js <URL> <output-dir>
+```
+
+### 2. format-html.js
+**功能**: 格式化压缩的 HTML
+
+**特性**:
+- 添加换行符
+- IDE 友好格式
+- 显示统计信息
+
+**用法**:
+```bash
+node scripts/format-html.js <input> <output>
+```
+
+### 3. download-images.js
+**功能**: 批量下载图片
+
+**特性**:
+- 支持限制数量
+- 跳过已存在文件
+- 显示进度
+
+**用法**:
+```bash
+node scripts/download-images.js <urls-file> <output-dir> [limit]
+```
+
+### 4. extract-resources.sh
+**功能**: 提取资源 URL
+
+**特性**:
+- 提取 CSS、JS、图片、字体
+- 处理协议相对路径
+- 生成分类列表
+
+**用法**:
+```bash
+bash scripts/extract-resources.sh <html-file> <output-dir>
+```
+
+### 5. clone-website.sh ⭐
+**功能**: 完整克隆流程
+
+**特性**:
+- 一键执行所有步骤
+- 自动安装依赖
+- 生成完整报告
+
+**用法**:
+```bash
+bash scripts/clone-website.sh <URL>
+```
+
+## 📊 输出报告模板
+
+克隆完成后，向用户报告：
+
+```
+✨ 网站克隆完成！
+
+📊 统计信息：
+- 源网站: <URL>
+- 保存位置: cloned-sites/<域名>/
+- 总大小: X MB
+- HTML文件: 3 个
+- CSS文件: X 个
+- JavaScript文件: X 个
+- 图片文件: X 个
+
+📁 文件结构：
+cloned-sites/<域名>/
+├── index-full.html         # 完整格式化版本 ⭐
+├── index-full-minified.html # 压缩版本
+├── screenshot.png          # 页面截图
+├── README.md              # 使用说明
+├── css/                    # 样式文件
+├── js/                     # JavaScript
+├── images/                 # 图片资源
+└── *-urls.txt             # 资源 URL 列表
+
+🚀 本地预览：
+cd cloned-sites/<域名>
+python3 -m http.server 8000
+访问: http://localhost:8000/index-full.html
+
+⚠️  注意事项：
+- 动态功能（API 调用、用户登录等）无法工作
+- 仅下载了主要资源（图片限制 30 个）
+- 适合学习网页结构和前端开发参考
+```
+
+## 🔧 自定义配置
+
+### 修改图片下载数量
+
+编辑 `clone-website.sh`，修改限制参数：
+```bash
+node "$SCRIPT_DIR/download-images.js" "$OUTPUT_DIR/image-urls.txt" "$OUTPUT_DIR/images" 50
+```
+
+### 修改滚动速度
+
+编辑 `clone-with-puppeteer.js`：
+```javascript
+const distance = 100; // 每次滚动距离
+```
+
+### 添加更多资源类型
+
+编辑 `extract-resources.sh`，添加新的提取规则。
+
+## 📚 脚本文档
+
+详细的脚本使用说明请参考：
+- `scripts/README.md` - 完整的脚本文档
+- 每个脚本文件头部的注释
+
+## 🎯 最佳实践
+
+1. ✅ 优先使用 `clone-website.sh` 一键克隆
+2. ✅ 检查 `scripts/README.md` 了解详细用法
+3. ✅ 根据需要调整下载限制
+4. ✅ 保留多个 HTML 版本以备不同用途
+5. ✅ 使用本地服务器预览（不要直接打开 HTML）
 
 ## 使用示例
 
 ```bash
+# 克隆 Bilibili
+/website-cloner:clone https://www.bilibili.com
+
+# 克隆其他网站
 /website-cloner:clone https://example.com
 ```
 
-## 注意事项
-- 仅用于学习和开发目的
-- 尊重网站的 robots.txt 和版权
-- 某些动态内容（需要后端API的）可能无法完全复制
-- 建议使用本地HTTP服务器预览（如 `python -m http.server`）
+## 版权声明
 
-## 实现细节
-1. 使用 WebFetch 工具获取网页内容
-2. 使用 Write 工具创建本地文件
-3. 使用 Bash 工具创建目录结构
-4. 使用正则表达式解析和替换资源路径
+克隆的网站内容仅供个人学习和研究使用，请勿用于商业用途或公开分发。

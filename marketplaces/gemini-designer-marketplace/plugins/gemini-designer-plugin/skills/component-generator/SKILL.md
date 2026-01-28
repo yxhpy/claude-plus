@@ -27,7 +27,7 @@ description: 当用户请求创建或生成前端组件时自动调用。适用�
    直接调用 gemini CLI 工具生成组件：
 
    ```bash
-   gemini -p "生成一个 [组件类型] 组件，使用 [框架]。
+   gemini --yolo -p "生成一个 [组件类型] 组件，使用 [框架]。
 
    要求：
    - 完整的 TypeScript 类型定义

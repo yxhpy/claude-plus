@@ -1,6 +1,6 @@
 # Gemini Designer
 
-高级 UI/UX 和前端工程师插件，集成 Gemini API 提供设计审查、组件生成和前端优化建议。
+高级 UI/UX 和前端工程师插件，集成 Gemini API（使用 --yolo 模式）提供设计审查、组件生成和前端优化建议。
 
 ## 功能特性
 
@@ -59,6 +59,8 @@ gemini config set apiKey YOUR_API_KEY
 gemini --version
 gemini "Hello, Gemini!"  # 测试 API 调用
 ```
+
+**重要说明**：本插件使用 `gemini --yolo` 模式来执行所有命令，这样可以跳过确认提示，实现更流畅的自动化体验。
 
 ### 安装
 

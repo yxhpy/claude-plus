@@ -1,25 +1,46 @@
-# Website Cloner Plugin
+# Website Cloner Plugin v2.0
 
-一个强大的 Claude Code 插件，能够高保真地克隆和还原网站，包括 HTML、CSS、JavaScript 和所有静态资源。
+一个强大的 Claude Code 插件，使用 **Puppeteer 无头浏览器**高保真克隆网站，支持动态网站、SPA 应用和懒加载内容。
+
+## 🎯 v2.0 核心升级
+
+基于 Bilibili 网站克隆的实战经验，全面升级克隆技术：
+
+- ✅ **Puppeteer 渲染**：完整执行 JavaScript，获取真实内容
+- ✅ **自动滚动**：触发懒加载，下载所有可见图片
+- ✅ **HTML 格式化**：自动格式化压缩的 HTML，IDE 友好
+- ✅ **智能提取**：支持协议相对路径、data-src、背景图片
+- ✅ **多版本保存**：原始、渲染、格式化三个版本
 
 ## 功能特性
 
-- 🎯 **高保真克隆**：完整复制网站的HTML结构、样式和脚本
-- 📦 **资源下载**：自动下载所有CSS、JavaScript、图片、字体等资源
-- 🔗 **路径修正**：智能转换绝对路径为相对路径，确保本地可用
-- 📁 **结构化输出**：生成清晰的目录结构，易于理解和维护
+- 🎯 **动态网站支持**：完美支持 React、Vue、Angular 等 SPA 应用
+- 📦 **完整资源下载**：自动下载 CSS、JavaScript、图片、字体等
+- 🔄 **懒加载处理**：自动滚动页面触发懒加载内容
+- 🔗 **路径智能修正**：处理绝对路径、相对路径、协议相对路径
+- 📁 **结构化输出**：清晰的目录结构，包含多个 HTML 版本
+- 📸 **页面截图**：自动生成页面预览截图
 - 🚀 **即开即用**：克隆后可直接在本地浏览器中预览
+
+## 前置要求
+
+- **Node.js**: v14+ （用于运行 Puppeteer）
+- **npm**: 包管理器
+- **Claude Code**: 最新版本
 
 ## 安装方法
 
-### 方法1：本地开发测试
+### 1. 安装插件
+
 ```bash
-claude --plugin-dir ./marketplaces/
+# 本地开发测试
+claude --plugin-dir ./marketplaces/website-cloner-marketplace
 ```
 
-### 方法2：通过插件市场安装（如果已发布）
+### 2. 安装 Puppeteer（首次使用）
+
 ```bash
-/plugin install website-cloner
+cd /tmp && npm install puppeteer
 ```
 
 ## 使用方法
@@ -32,14 +53,14 @@ claude --plugin-dir ./marketplaces/
 
 ## 使用示例
 
-### 克隆一个简单网站
+### 克隆动态网站（如 Bilibili）
 ```bash
-/website-cloner:clone https://example.com
+/website-cloner:clone https://www.bilibili.com
 ```
 
-### 克隆一个复杂的单页应用
+### 克隆 SPA 应用
 ```bash
-/website-cloner:clone https://your-spa-site.com
+/website-cloner:clone https://your-react-app.com
 ```
 
 ## 输出结构
@@ -49,18 +70,22 @@ claude --plugin-dir ./marketplaces/
 ```
 cloned-sites/
 └── example.com/
-    ├── index.html          # 主页面
-    ├── css/                # 样式文件
+    ├── index.html              # 原始静态 HTML
+    ├── index-rendered.html     # 初次渲染版本
+    ├── index-full.html         # 完整格式化版本 ⭐ 推荐使用
+    ├── screenshot.png          # 页面截图
+    ├── README.md              # 使用说明
+    ├── css/                    # 样式文件
     │   ├── main.css
     │   └── ...
-    ├── js/                 # JavaScript文件
+    ├── js/                     # JavaScript文件
     │   ├── app.js
     │   └── ...
-    ├── images/             # 图片资源
+    ├── images/                 # 图片资源（30-50个主要图片）
     │   └── ...
-    ├── fonts/              # 字体文件
+    ├── fonts/                  # 字体文件
     │   └── ...
-    └── assets/             # 其他资源
+    └── assets/                 # 其他资源
         └── ...
 ```
 
@@ -68,12 +93,12 @@ cloned-sites/
 
 克隆完成后，可以使用以下方法在本地预览：
 
-### 使用 Python 内置服务器
+### 使用 Python 内置服务器（推荐）
 ```bash
 cd cloned-sites/example.com
-python -m http.server 8000
+python3 -m http.server 8000
 ```
-然后在浏览器中访问 `http://localhost:8000`
+然后在浏览器中访问 `http://localhost:8000/index-full.html`
 
 ### 使用 Node.js http-server
 ```bash

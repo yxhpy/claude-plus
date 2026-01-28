@@ -21,7 +21,7 @@ description: 对当前 UI/UX 设计进行专业审查，提供改进建议
    构建审查提示词并调用 gemini CLI：
 
    ```bash
-   gemini -p "作为资深 UI/UX 设计师，审查以下代码：
+   gemini --yolo -p "作为资深 UI/UX 设计师，审查以下代码：
 
    [代码内容]
 

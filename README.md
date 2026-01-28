@@ -1,6 +1,6 @@
 # Claude Plus 插件项目
 
-Claude Code 插件生态系统，包含三个功能插件和配套的 marketplace 分发系统。
+Claude Code 插件生态系统，包含四个功能插件和配套的 marketplace 分发系统。
 
 ## 📦 项目结构
 
@@ -35,7 +35,8 @@ claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-cre
 # 同时使用多个插件
 claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-creator-plugin \
        --plugin-dir ./marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin \
-       --plugin-dir ./marketplaces/codex-marketplace/plugins/codex-plugin
+       --plugin-dir ./marketplaces/codex-marketplace/plugins/codex-plugin \
+       --plugin-dir ./marketplaces/gemini-designer-marketplace/plugins/gemini-designer-plugin
 ```
 
 ### 通过 Marketplace 安装
@@ -84,6 +85,17 @@ Codex CLI 集成，提供自动化任务执行和代码审查。
 claude --plugin-dir ./marketplaces/codex-marketplace/plugins/codex-plugin
 /codex:quick-review          # 快速代码审查
 /codex:exec <task>           # 执行任务
+```
+
+### 4. Gemini Designer
+
+高级 UI/UX 和前端工程师插件，使用 Gemini CLI 提供设计审查、组件生成和前端优化。
+
+```bash
+claude --plugin-dir ./marketplaces/gemini-designer-marketplace/plugins/gemini-designer-plugin
+/gemini-designer:prototype   # 生成高保真原型
+/gemini-designer:generate    # 生成前端组件
+/gemini-designer:review      # UI/UX 设计审查
 ```
 
 ## 🔧 开发插件

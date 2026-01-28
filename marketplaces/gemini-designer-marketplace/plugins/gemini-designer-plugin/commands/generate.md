@@ -24,7 +24,7 @@ description: 生成高质量的前端组件代码
    使用 `gemini` CLI 工具直接生成组件代码：
 
    ```bash
-   gemini -p "生成一个 [type] 组件，使用 [framework] 和 [style]。
+   gemini --yolo -p "生成一个 [type] 组件，使用 [framework] 和 [style]。
    要求：
    - 完整的 TypeScript 类型定义
    - [features] 特性支持

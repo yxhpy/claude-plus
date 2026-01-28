@@ -1,23 +1,24 @@
 {
   "name": "gemini-designer-marketplace",
   "owner": {
-    "name": "Your Name"
+    "name": "Claude Plus Team"
   },
   "metadata": {
-    "description": "Gemini Designer 插件市场 - 提供 UI/UX 设计和前端工程能力",
-    "version": "2.0.0"
+    "description": "Gemini Designer 插件市场 - 提供 UI/UX 设计和前端工程能力（使用 --yolo 模式）",
+    "version": "2.2.0"
   },
   "plugins": [
     {
       "name": "gemini-designer",
-      "description": "高级 UI/UX 和前端工程师插件，使用 Gemini CLI 提供设计审查、组件生成和前端优化建议",
-      "version": "2.0.0",
+      "description": "高级 UI/UX 和前端工程师插件，使用 Gemini CLI（--yolo 模式）提供设计审查、组件生成和前端优化建议",
+      "version": "2.2.0",
       "author": {
-        "name": "Your Name"
+        "name": "Claude Plus Team"
       },
-      "homepage": "https://github.com/yourusername/gemini-designer-marketplace",
+      "homepage": "https://github.com/claude-plus/claude-plus",
       "source": "./plugins/gemini-designer-plugin",
       "license": "MIT"
     }
   ]
 }
+

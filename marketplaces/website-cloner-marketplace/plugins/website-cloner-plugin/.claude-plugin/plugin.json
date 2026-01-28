@@ -1,7 +1,7 @@
 {
   "name": "website-cloner",
-  "description": "高保真克隆和还原网站的插件，支持HTML、CSS、JavaScript和静态资源",
-  "version": "1.0.0",
+  "description": "高保真克隆网站插件，使用 Puppeteer 无头浏览器支持动态网站、SPA 应用、懒加载图片，自动格式化 HTML。包含通用脚本工具集",
+  "version": "2.1.0",
   "author": {
     "name": "Claude Plus Team"
   },

@@ -4,13 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-这是一个 Claude Code 插件生态系统项目，包含三个功能插件和配套的 marketplace 分发系统。项目采用插件与市场分离的架构设计。
+这是一个 Claude Code 插件生态系统项目，包含四个功能插件和配套的 marketplace 分发系统。项目采用插件与市场分离的架构设计。
 
 **核心组件**：
-- **marketplaces/** - 3个独立的 marketplace，每个包含对应的插件
+- **marketplaces/** - 4个独立的 marketplace，每个包含对应的插件
   - codex-marketplace (包含 codex-plugin)
-  - plugin-creator-marketplace (包含 plugin-creator-plugin)
+  - plugin-creator-marketplace (包含 plugin-creator-plugin 和 plugin-updater-plugin)
   - website-cloner-marketplace (包含 website-cloner-plugin)
+  - gemini-designer-marketplace (包含 gemini-designer-plugin)
 - **docs/** - 51个官方文档 + 自定义文档
 
 ## 快速开始
@@ -24,7 +25,8 @@ claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-cre
 # 多个插件
 claude --plugin-dir ./marketplaces/plugin-creator-marketplace/plugins/plugin-creator-plugin \
        --plugin-dir ./marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin \
-       --plugin-dir ./marketplaces/codex-marketplace/plugins/codex-plugin
+       --plugin-dir ./marketplaces/codex-marketplace/plugins/codex-plugin \
+       --plugin-dir ./marketplaces/gemini-designer-marketplace/plugins/gemini-designer-plugin
 ```
 
 ### 测试插件
@@ -132,6 +134,22 @@ Codex CLI 集成，提供自动化任务执行和代码审查。
 - `review` - 自动代码审查
 
 **安全特性**：默认使用 read-only 沙箱，仅在必要时升级权限。
+
+### 4. Gemini Designer
+
+高级 UI/UX 和前端工程师插件，使用 Gemini CLI（--yolo 模式）提供设计审查、组件生成和前端优化。
+
+**用户命令**：
+- `/gemini-designer:prototype` - 生成高保真交互式原型（支持单页或多页结构）
+- `/gemini-designer:generate` - 生成高质量的前端组件代码
+- `/gemini-designer:optimize` - 优化现有 UI 代码的性能和用户体验
+- `/gemini-designer:review` - 对当前 UI/UX 设计进行专业审查
+
+**Agent 技能**：
+- `component-generator` - 自动生成前端组件
+- `design-review` - 自动 UI/UX 设计审查
+- `ui-optimizer` - 自动前端性能优化
+- `prototype-generator` - 自动生成高保真原型
 
 ## 开发工作流
 
@@ -396,7 +414,7 @@ Plugin Creator 可以创建其他插件，实现"用插件创建插件"的元编
 
 ### 完整的生态系统
 
-- 3个功能插件 + 1个测试插件
+- 4个功能插件（plugin-creator、website-cloner、codex、gemini-designer）
 - 配套的 marketplace 分发系统
 - 完整的文档体系（51个官方文档 + 自定义文档）
 

@@ -181,6 +181,6 @@ claude --plugin-dir ./gemini-designer-marketplace/plugins/gemini-designer-plugin
 
 ## 获取帮助
 
-- GitHub Issues: https://github.com/yourusername/gemini-designer-marketplace/issues
+- GitHub Issues: https://github.com/claude-plus/claude-plus/issues
 - 文档：README.md
 - 验证插件：`./validate.sh`
