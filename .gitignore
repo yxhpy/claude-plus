@@ -49,3 +49,9 @@ Thumbs.db
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Claude Code
+.claude/settings.local.json
+
+# Cloned websites (test/example sites)
+cloned-sites/
