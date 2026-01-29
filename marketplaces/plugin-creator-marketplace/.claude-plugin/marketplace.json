@@ -10,27 +10,27 @@
   "plugins": [
     {
       "name": "plugin-creator",
-      "description": "快速创建 Claude Code 插件的脚手架工具",
-      "version": "1.0.0",
+      "description": "快速创建 Claude Code 插件的脚手架工具，支持测试文件和完整文档生成",
+      "version": "1.1.0",
       "author": {
         "name": "Claude Plus Team"
       },
       "homepage": "https://github.com/claude-plus/claude-plus",
       "source": "./plugins/plugin-creator-plugin",
       "license": "MIT",
-      "keywords": ["plugin", "creator", "scaffold", "generator"]
+      "keywords": ["plugin", "creator", "scaffold", "generator", "testing", "documentation"]
     },
     {
       "name": "plugin-updater",
-      "description": "更新插件配置和内容。核心原则：能力优先文档最少，将经验转化为脚本和自动化能力，精简 skills/commands，删除冗余文档",
-      "version": "1.1.0",
+      "description": "更新插件配置和内容。能力优先文档最少，脚本化自动化，精简优化。新增 update-plugin.sh 自动化脚本",
+      "version": "1.2.0",
       "author": {
         "name": "Claude Plus Team"
       },
       "homepage": "https://github.com/claude-plus/plugin-creator-marketplace",
       "source": "./plugins/plugin-updater-plugin",
       "license": "MIT",
-      "keywords": ["plugin", "updater", "management", "marketplace"]
+      "keywords": ["plugin", "updater", "management", "marketplace", "automation"]
     }
   ]
 }

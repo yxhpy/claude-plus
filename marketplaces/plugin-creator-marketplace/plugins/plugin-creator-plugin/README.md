@@ -6,11 +6,13 @@
 
 - 🚀 **快速创建**：一条命令生成完整插件结构
 - 📦 **标准结构**：遵循 Claude Code 插件最佳实践
-- 📝 **完整文档**：自动生成 README、使用指南、快速开始等文档
+- 📝 **完整文档**：自动生成 README、CHANGELOG、CONTRIBUTING 等文档
 - ⚙️ **配置文件**：自动生成 plugin.json 和 marketplace.json
-- 🎨 **示例代码**：包含命令和技能的示例模板
-- ✅ **验证脚本**：自动生成插件验证脚本
+- 🎨 **丰富示例**：包含 3 个命令和 3 个技能的示例模板
+- 🧪 **测试套件**：自动生成完整的测试文件（命令测试、技能测试、集成测试）
+- ✅ **验证脚本**：自动生成增强的插件验证脚本
 - 🔧 **开发工具**：包含安装脚本和项目结构说明
+- 📚 **文档模板**：提供 CHANGELOG.md 和 CONTRIBUTING.md 模板
 
 ## 📦 安装方法
 
@@ -59,23 +61,38 @@ claude --plugin-dir ./marketplaces/
 ## 📁 生成的插件结构
 
 ```
-my-plugin-plugin/
+my-plugin-marketplace/
 ├── .claude-plugin/
-│   ├── plugin.json              # 插件元数据
 │   └── marketplace.json         # 市场配置
-├── commands/                    # 用户命令目录
-│   └── example.md              # 示例命令
-├── skills/                      # Agent 技能目录
-│   └── example/
-│       └── SKILL.md            # 示例技能
-├── README.md                    # 项目说明
-├── USAGE_GUIDE.md              # 详细使用指南
-├── QUICKSTART.md               # 快速开始
-├── INSTALL.sh                  # 安装脚本（可执行）
-├── validate.sh                 # 验证脚本（可执行）
-├── .gitignore                  # Git 忽略文件
-├── LICENSE                     # MIT 许可证
-└── PROJECT_STRUCTURE.md        # 项目结构说明
+└── plugins/
+    └── my-plugin-plugin/
+        ├── .claude-plugin/
+        │   └── plugin.json              # 插件元数据
+        ├── commands/                    # 用户命令目录
+        │   ├── example.md              # 示例命令
+        │   ├── help.md                 # 帮助命令
+        │   └── config.md               # 配置命令
+        ├── skills/                      # Agent 技能目录
+        │   ├── example/
+        │   │   └── SKILL.md            # 示例技能
+        │   ├── auto-task/
+        │   │   └── SKILL.md            # 自动任务技能
+        │   └── helper/
+        │       └── SKILL.md            # 辅助技能
+        ├── tests/                       # 测试目录
+        │   ├── test-commands.sh        # 命令测试
+        │   ├── test-skills.sh          # 技能测试
+        │   └── test-integration.sh     # 集成测试
+        ├── README.md                    # 项目说明
+        ├── CHANGELOG.md                 # 变更日志
+        ├── CONTRIBUTING.md              # 贡献指南
+        ├── USAGE_GUIDE.md              # 详细使用指南
+        ├── QUICKSTART.md               # 快速开始
+        ├── INSTALL.sh                  # 安装脚本（可执行）
+        ├── validate.sh                 # 验证脚本（可执行）
+        ├── .gitignore                  # Git 忽略文件
+        ├── LICENSE                     # MIT 许可证
+        └── PROJECT_STRUCTURE.md        # 项目结构说明
 ```
 
 ## 📝 生成的文件说明
@@ -85,18 +102,29 @@ my-plugin-plugin/
 - **marketplace.json**: 市场配置，用于插件分发
 
 ### 代码文件
-- **commands/example.md**: 示例用户命令，展示如何创建命令
-- **skills/example/SKILL.md**: 示例 Agent 技能，展示如何创建技能
+- **commands/example.md**: 示例用户命令，展示基本功能
+- **commands/help.md**: 帮助命令，显示插件使用说明
+- **commands/config.md**: 配置命令，管理插件配置
+- **skills/example/SKILL.md**: 示例技能，演示自动调用
+- **skills/auto-task/SKILL.md**: 自动任务技能，处理重复性任务
+- **skills/helper/SKILL.md**: 辅助技能，提供通用功能
+
+### 测试文件
+- **tests/test-commands.sh**: 测试所有命令是否正常工作
+- **tests/test-skills.sh**: 验证所有技能格式和功能
+- **tests/test-integration.sh**: 运行完整的集成测试套件
 
 ### 文档文件
 - **README.md**: 完整的项目说明，包含安装、使用、配置等
+- **CHANGELOG.md**: 版本变更记录，遵循 Keep a Changelog 格式
+- **CONTRIBUTING.md**: 贡献指南，包含开发流程和代码规范
 - **USAGE_GUIDE.md**: 详细的使用指南，包含所有命令和场景
 - **QUICKSTART.md**: 5分钟快速上手指南
 - **PROJECT_STRUCTURE.md**: 项目结构和开发指南
 
 ### 工具脚本
 - **INSTALL.sh**: 安装指南脚本，展示3种安装方法
-- **validate.sh**: 验证插件结构的脚本
+- **validate.sh**: 增强的验证脚本，检查文件、JSON 格式、文档完整性
 
 ### 其他文件
 - **.gitignore**: Git 忽略规则
@@ -169,9 +197,22 @@ description: 技能描述
 
 ### 4. 测试插件
 ```bash
-cd my-plugin-plugin
-./validate.sh                    # 验证结构
-claude --plugin-dir .           # 测试插件
+cd my-plugin-marketplace/plugins/my-plugin-plugin
+
+# 运行所有测试
+./tests/test-integration.sh
+
+# 单独测试命令
+./tests/test-commands.sh
+
+# 单独测试技能
+./tests/test-skills.sh
+
+# 验证结构
+./validate.sh
+
+# 本地测试插件
+claude --plugin-dir .
 ```
 
 ## ⚙️ 配置选项
@@ -307,10 +348,19 @@ git push -u origin main
 ## 📊 性能提示
 
 - **快速创建**: 插件生成通常在 10-30 秒内完成
-- **文件数量**: 生成约 12 个文件
-- **磁盘空间**: 约 50-100 KB
+- **文件数量**: 生成约 20+ 个文件（包括测试文件）
+- **磁盘空间**: 约 100-150 KB
+- **测试覆盖**: 包含命令测试、技能测试和集成测试
 
 ## 📝 版本历史
+
+### v1.1.0 (2026-01-29)
+- ✨ 新增自动生成测试文件（test-commands.sh, test-skills.sh, test-integration.sh）
+- 📚 改进文档模板，新增 CHANGELOG.md 和 CONTRIBUTING.md
+- 🎨 增加更多示例命令（example, help, config）
+- 🤖 增加更多示例技能（example, auto-task, helper）
+- 🔧 增强 validate.sh 脚本，支持彩色输出和详细检查
+- 📦 更新 keywords，添加 testing 和 documentation 标签
 
 ### v1.0.0 (2026-01-28)
 - 初始版本发布

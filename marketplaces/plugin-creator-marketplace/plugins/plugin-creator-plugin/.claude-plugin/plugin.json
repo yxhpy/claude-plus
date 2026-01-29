@@ -1,12 +1,12 @@
 {
   "name": "plugin-creator",
-  "description": "快速创建 Claude Code 插件的脚手架工具，自动生成标准插件结构、配置文件和文档",
-  "version": "1.0.0",
+  "description": "快速创建 Claude Code 插件的脚手架工具，自动生成标准插件结构、配置文件、测试文件和完整文档",
+  "version": "1.1.0",
   "author": {
     "name": "Claude Plus Team"
   },
   "homepage": "https://github.com/claude-plus/claude-plus",
   "repository": "https://github.com/claude-plus/claude-plus",
   "license": "MIT",
-  "keywords": ["plugin", "creator", "scaffold", "generator", "开发工具"]
+  "keywords": ["plugin", "creator", "scaffold", "generator", "开发工具", "testing", "documentation"]
 }
