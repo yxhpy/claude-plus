@@ -1,53 +1,86 @@
 ---
 name: update
-description: Automatically update plugin configurations and content when users request modifications to existing plugins. Use when users want to update plugin.json, marketplace.json, add commands/skills, or modify plugin metadata.
+description: 自动更新插件配置和内容。核心原则：将经验转化为通用能力和脚本，而不是创建文档。更新时应精简 skills/commands，添加可复用脚本，删除冗余文档。
 ---
 
 # 插件更新技能
 
-这是一个 Agent 技能，当用户请求更新现有插件时，Claude 会自动调用此技能。
+## 核心原则 ⚠️
 
-## 何时使用
+**重要**：更新插件时遵循以下原则：
 
-当用户请求以下操作时，自动使用此技能：
-- 更新插件的版本号
-- 修改插件描述或元数据
-- 添加新的命令或技能到现有插件
-- 更新 plugin.json 或 marketplace.json
-- 修改插件配置
-- 更新插件文档
+1. **能力优先，文档最少**
+   - ❌ 不要创建 CHANGELOG.md, EXPERIENCE.md 等文档
+   - ✅ 将经验转化为可复用的脚本和自动化能力
+
+2. **精简优先**
+   - ✅ 精简 skills/commands 内容，删除冗余步骤
+   - ✅ 用脚本调用替代手动步骤
+   - ✅ 保持文档简洁实用
+
+3. **脚本化**
+   - ✅ 将复杂流程封装为脚本
+   - ✅ 添加通用工具到 scripts/ 目录
+   - ✅ 让功能自动化而不是文档化
 
 ## 执行步骤
 
-### 1. 识别目标插件
+### 1. 读取配置
+```bash
+# 读取插件配置
+<plugin-path>/.claude-plugin/plugin.json
+<marketplace-path>/.claude-plugin/marketplace.json
+```
 
-从用户输入中提取：
-- 插件路径或名称
-- 更新需求描述
+### 2. 更新版本和描述
+- 递增版本号（次要功能 +0.1.0）
+- 更新 description 反映新功能
+- 同步更新 plugin.json 和 marketplace.json
 
-### 2. 读取现有配置
+### 3. 更新 skills/commands
+- 精简内容，删除冗余步骤
+- 用脚本调用替代手动操作
+- 更新 description 反映新能力
 
-使用 Read 工具读取：
-- `<plugin-path>/.claude-plugin/plugin.json`
-- 对应的 `marketplace.json`（如果存在）
-- `README.md` 和其他文档
+### 4. 添加脚本（如需要）
+- 将新能力封装为脚本
+- 放入 scripts/ 目录
+- 集成到主流程
 
-### 3. 分析更新需求
+### 5. 清理文档
+- 删除不必要的文档文件
+- 只保留 README.md
+- 更新 README 版本历史（简短）
 
-理解用户想要：
-- 更新哪些字段
-- 添加什么功能
-- 修改什么内容
-- 版本如何变更
+## 更新报告
 
-### 4. 执行更新操作
+```
+✅ 插件更新完成
 
-根据需求类型执行相应操作：
+📦 <plugin-name> v<old> → v<new>
 
-**配置更新**：
-- 使用 Edit 工具更新 plugin.json
-- 同步更新 marketplace.json
-- 确保版本号一致
+🔄 更新内容：
+- plugin.json: description, version
+- marketplace.json: 同步更新
+- skills/commands: 精简 X 行
+- scripts: 新增 X 个脚本
+- 文档: 删除 X 个冗余文件
+
+💡 核心改进：
+<简述核心能力提升>
+```
+
+## 示例
+
+**好的更新**：
+- 添加 fix-paths.py 脚本自动修正路径
+- 精简 SKILL.md 从 228 行到 95 行
+- 删除 CHANGELOG.md, EXPERIENCE.md
+
+**不好的更新**：
+- 创建大量文档记录经验
+- 保留冗长的手动步骤说明
+- 不添加自动化脚本
 
 **内容更新**：
 - 添加新命令文件到 commands/

@@ -1,58 +1,90 @@
 ---
 name: clone
-description: 高保真克隆网站，使用通用脚本工具集和 Puppeteer 无头浏览器渲染完整内容，支持动态网站、懒加载图片和 SPA 应用。使用方式：/website-cloner:clone <网站URL>
+description: 高保真克隆网站，使用 Puppeteer 无头浏览器渲染完整内容，自动修正资源路径，支持动态网站、懒加载图片和 SPA 应用。使用方式：/website-cloner:clone <网站URL>
 ---
 
-# 网站克隆技能（脚本化版本）
+# 网站克隆技能
 
 你是一个专业的网站克隆工具。使用插件提供的通用脚本工具集，支持现代动态网站的完整克隆。
 
 ## 输入参数
 - `$ARGUMENTS`: 要克隆的网站URL（例如：https://example.com）
 
-## 🎯 核心优势
+## 🎯 核心工具
 
-本插件提供了一套完整的通用脚本工具集，位于 `scripts/` 目录：
+本插件提供完整的脚本工具集，位于 `scripts/` 目录：
 
 1. **clone-with-puppeteer.js** - Puppeteer 渲染引擎
 2. **format-html.js** - HTML 格式化工具
 3. **download-images.js** - 批量图片下载器
 4. **extract-resources.sh** - 资源 URL 提取器
-5. **clone-website.sh** - 一键完整克隆流程 ⭐
+5. **fix-paths.py** - 自动路径修正工具 ⭐ 新增
+6. **clone-website.sh** - 一键完整克隆流程 ⭐
 
-## 🚀 推荐使用方法
+## 🚀 使用方法
 
-### 方法 1: 一键克隆（推荐）
-
-使用完整流程脚本，自动执行所有步骤：
+直接调用完整流程脚本：
 
 ```bash
-# 定位到脚本目录
-PLUGIN_DIR="marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin"
-cd "$PLUGIN_DIR/scripts"
-
-# 执行克隆
-./clone-website.sh <URL>
+bash marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin/scripts/clone-website.sh "$ARGUMENTS"
 ```
 
-**示例**：
-```bash
-./clone-website.sh https://www.bilibili.com
-```
-
-这个脚本会自动：
+脚本会自动执行：
 - ✅ 创建目录结构
 - ✅ 使用 Puppeteer 渲染页面
 - ✅ 格式化 HTML
 - ✅ 提取资源 URL
 - ✅ 下载图片、CSS、JS
+- ✅ **自动修正资源路径** ⭐ 新增
 - ✅ 生成 README 文档
 - ✅ 显示统计信息
 
-### 方法 2: 使用 Bash 工具直接调用
+## 📊 输出报告
+
+克隆完成后，向用户报告：
+
+```
+✨ 网站克隆完成！
+
+📊 统计信息：
+- 源网站: <URL>
+- 保存位置: cloned-sites/<域名>/
+- 总大小: X MB
+- HTML文件: 3 个
+- CSS文件: X 个
+- JavaScript文件: X 个
+- 图片文件: X 个
+
+📁 文件结构：
+cloned-sites/<域名>/
+├── index.html              # 修正后的版本 ⭐ 推荐使用
+├── index-full.html         # 完整格式化版本
+├── index-full-minified.html # 压缩版本
+├── screenshot.png          # 页面截图
+├── README.md              # 使用说明
+├── css/                    # 样式文件
+├── js/                     # JavaScript
+└── images/                 # 图片资源
+
+🚀 本地预览：
+cd cloned-sites/<域名>
+python3 -m http.server 8000
+访问: http://localhost:8000/index.html
+
+⚠️  注意事项：
+- 动态功能（API 调用、用户登录等）无法工作
+- 仅下载了主要资源（图片限制 30 个）
+- 适合学习网页结构和前端开发参考
+```
+
+## 使用示例
 
 ```bash
-bash marketplaces/website-cloner-marketplace/plugins/website-cloner-plugin/scripts/clone-website.sh "$ARGUMENTS"
+# 克隆 Apple iPhone 网站
+/website-cloner:clone https://www.apple.com/iphone/
+
+# 克隆 Bilibili
+/website-cloner:clone https://www.bilibili.com
 ```
 
 ## 📋 克隆流程详解

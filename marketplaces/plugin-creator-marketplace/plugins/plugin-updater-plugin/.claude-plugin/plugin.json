@@ -1,7 +1,7 @@
 {
   "name": "plugin-updater",
-  "description": "Update existing Claude Code plugins - modify plugin.json, marketplace.json, and plugin content based on user requirements",
-  "version": "1.0.0",
+  "description": "更新插件配置和内容。核心原则：能力优先文档最少，将经验转化为脚本和自动化能力，精简 skills/commands，删除冗余文档",
+  "version": "1.1.0",
   "author": {
     "name": "Claude Plus Team"
   },

@@ -99,6 +99,14 @@ if [ -f "$OUTPUT_DIR/js-urls.txt" ]; then
     done < "$OUTPUT_DIR/js-urls.txt"
 fi
 
+# 阶段 7: 修正资源路径
+echo ""
+echo "🔧 阶段 7: 修正资源路径"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if [ -f "$OUTPUT_DIR/index-full.html" ]; then
+    python3 "$SCRIPT_DIR/fix-paths.py" "$OUTPUT_DIR/index-full.html" "$OUTPUT_DIR/index.html"
+fi
+
 # 生成 README
 echo ""
 echo "📝 生成 README..."

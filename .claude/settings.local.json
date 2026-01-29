@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(gemini:*)"
+      "Bash(gemini:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:www.baidu.com)",
+      "WebFetch(domain:www.apple.com)"
     ]
   }
 }
